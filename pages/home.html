@@ -12,6 +12,98 @@
     <nav><a href="index.html">Landing Page</a></nav>
     <div class="container">
       <h1>Welcome home to Zion Fitness</h1>
+      <hr />
+      <div class="user-reg-log">
+        <div class="registration-container">
+          <!------------------------------ Registration Section ------------------------------->
+          <h1>Register</h1>
+          <form action="">
+            <span id="login-error"></span>
+            <input
+              type="text"
+              name="firstname"
+              id="firstname"
+              placeholder="firstname"
+              required
+            />
+            <br />
+            <input
+              type="text"
+              name="lastname"
+              id="lastname"
+              placeholder="Lastname"
+              required
+            />
+            <br />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              required
+            />
+            <br />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password"
+              required
+            />
+            <br />
+            <input
+              type="password"
+              name="confirmPassword"
+              id="password"
+              placeholder=" Confirm password"
+              required
+            />
+            <br />
+            <input type="submit" name="login" id="login" value="Register" />
+            <br />
+            <p>
+              If you already registered please &nbsp;
+              <a href="login.html">login</a>
+            </p>
+          </form>
+        </div>
+        <!--------------------------------------------------------------------------->
+        <!------------------------------ Login Section ------------------------------->
+        <div class="login-container">
+          <h1>Login</h1>
+          <form action="">
+            <span id="login-error"></span>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="email"
+              required
+            />
+            <br />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password"
+            />
+            <br />
+            <input
+              type="submit"
+              name="login"
+              id="login"
+              value="Login"
+              required
+            />
+            <br />
+            <p>
+              <a href="#">Forgot password</a>
+            </p>
+          </form>
+        </div>
+        <!--------------------------------------------------------------------------->
+      </div>
+      <hr />
     </div>
   </body>
 </html>
