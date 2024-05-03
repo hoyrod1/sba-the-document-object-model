@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(191, 206, 219);
+}
+
+.container {
+  width: 50%;
+  height: 15vh;
+  background-color: silver;
+  border: 2px solid orange;
+  border-radius: 10px;
+  margin: 50px auto;
+  box-shadow: 1px 1px 50px 1px rgba(94, 92, 92, 0.553);
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  padding-top: 30px;
+  text-decoration: underline;
+}
+
+button {
+  padding: 10px;
+  display: block;
+  margin: 30px auto;
+  border: 2px solid orange;
+  border-radius: 10px;
+  background-color: rgb(246, 203, 119);
+  transition: 1s;
+}
+button:hover {
+  border: 2px solid rgb(191, 206, 219);
+  background-color: white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  transition: 1s;
+}
+
+a:hover {
+  color: orange;
+}
