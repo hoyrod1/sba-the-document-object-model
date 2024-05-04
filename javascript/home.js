@@ -313,38 +313,49 @@ function assessmentForm(name) {
   form.appendChild(submitButton);
   // Append assessment form to the div
   assessmentDiv.appendChild(form);
-  //----------------------------------------------------------------//
-  // New div to contain the values inputed inside the assessment form
-  const assessmentGoalDiv = document.createElement("div");
-  assessmentGoalDiv.style.width = "80%";
-  assessmentGoalDiv.style.height = "80%";
-  assessmentGoalDiv.style.margin = "15px auto";
-  assessmentGoalDiv.style.color = "white";
-  assessmentGoalDiv.style.backgroundColor = " rgb(185, 184, 184)";
-  assessmentGoalDiv.style.border = "2px solid white";
-  assessmentGoalDiv.style.borderRadius = "15px";
-
-  bodyTag.appendChild(assessmentGoalDiv);
 
   const startingBodyWeight = document.getElementById("bodyWeight");
   const fitnessGoal = document.getElementById("fitnessGoals");
 
+  const assessmentGoalTable = document.createElement("table");
+  const assessmentGoalFragment = document.createDocumentFragment();
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    //----------------------------------------------------------------//
+    // New div to contain the values inputed inside the assessment form
+    const assessmentGoalDiv = document.createElement("div");
+    assessmentGoalDiv.style.width = "80%";
+    assessmentGoalDiv.style.height = "80%";
+    assessmentGoalDiv.style.margin = "15px auto";
+    assessmentGoalDiv.style.color = "white";
+    assessmentGoalDiv.style.backgroundColor = " rgb(185, 184, 184)";
+    assessmentGoalDiv.style.border = "2px solid white";
+    assessmentGoalDiv.style.borderRadius = "15px";
+
+    bodyTag.appendChild(assessmentGoalDiv);
+
     const weightInput = startingBodyWeight.value;
     const goalInput = fitnessGoal.value;
     const assessmentArr = [weightInput, goalInput];
     let incrementor = 1;
     assessmentArr.forEach((data) => {
-      const outPutTag = document.createElement("p");
-      outPutTag.style.fontSize = "large";
-      outPutTag.style.margin = "10px";
-      outPutTag.style.textAlign = "center";
-      outPutTag.style.color = "green";
-      outPutTag.textContent = `${incrementor}. ${data}`;
-      assessmentDiv.appendChild(outPutTag);
+      // const outPutTag = document.createElement("p");
+      // outPutTag.style.fontSize = "large";
+      // outPutTag.style.margin = "10px";
+      // outPutTag.style.color = "green";
+      // assessmentDiv.appendChild(outPutTag);
+      const outPutTr = document.createElement("tr");
+      const outPutTd = document.createElement("td");
+      outPutTd.style.textAlign = "center";
+      outPutTd.textContent = `${incrementor}. ${data}`;
+      outPutTr.appendChild(outPutTd);
+      assessmentGoalFragment.appendChild(outPutTr);
       incrementor++;
     });
+
+    assessmentGoalTable.appendChild(assessmentGoalFragment);
 
     form.reset();
 
