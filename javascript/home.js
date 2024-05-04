@@ -7,7 +7,7 @@ console.log(
 //=================================================================//
 //================== Registration Form Validation =================//
 //----------------- Error display container cached ----------------//
-let errorDisplay = document.getElementById("login-error");
+let errorDisplay = document.querySelector("#reg-error");
 //---------------- Registration form elements cached --------------//
 const registrationForm = document.getElementById("reg-form");
 const regUserFName = registrationForm.elements["name"];
@@ -44,8 +44,8 @@ function registrationFormSubmission(e) {
   const valUserEmail = regUserEmail.value.toLowerCase();
   const valUsrPassword = regUserPassword.value;
 
-  // Caching the username from local storage
   if (localStorage.length > 0) {
+    // Caching the email from local storage is it exist
     const storedEmail = localStorage.getItem("email");
     if (valUserEmail === storedEmail.toLowerCase()) {
       const message = "Account already exist";
@@ -56,13 +56,13 @@ function registrationFormSubmission(e) {
   }
 
   // Storing the name to local storage
-  // const storingUserName = localStorage.setItem("name", valUserFName);
-  // // Storing the email to local storage
-  // const storingEmail = localStorage.setItem("email", valUserEmail);
-  // // Storing the password to local storage
-  // const storingPassword = localStorage.setItem("password", valUsrPassword);
+  const storingUserName = localStorage.setItem("name", valUserFName);
+  // Storing the email to local storage
+  const storingEmail = localStorage.setItem("email", valUserEmail);
+  // Storing the password to local storage
+  const storingPassword = localStorage.setItem("password", valUsrPassword);
 
-  // registrationForm.reset();
+  registrationForm.reset();
   //------------------------------------------------------------------//
   //==================================================================//
   //---------------- Registration Validaiton Function ----------------//
@@ -165,6 +165,7 @@ function registrationFormSubmission(e) {
 console.log("=================== Login Validation ===================");
 //===================================================================//
 //=================== Login Form Validation ===================//
+let loginErrorDisplay = document.querySelector("#login-error");
 //---------------- Body element cached cached ----------------//
 const bodyTag = document.body;
 const mainContainer = document.getElementsByClassName("container");
@@ -248,9 +249,9 @@ function loginFormSubmission(e) {
   //==================================================================//
   //---------------- Function to create error message ----------------//
   function loginErrorMessage(message) {
-    errorDisplay.style.display = "block";
-    errorDisplay.style.fontSize = "small";
-    errorDisplay.textContent = message;
+    loginErrorDisplay.style.display = "block";
+    loginErrorDisplay.style.fontSize = "small";
+    loginErrorDisplay.textContent = message;
   }
   //==================================================================//
 }
