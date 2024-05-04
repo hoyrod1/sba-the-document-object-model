@@ -10,6 +10,7 @@
   </head>
   <body>
     <nav><a href="index.html">Landing Page</a></nav>
+    <hr />
     <div class="container">
       <h1>Welcome home to Zion Fitness</h1>
       <hr />
@@ -17,66 +18,44 @@
         <div class="registration-container">
           <!------------------------------ Registration Section ------------------------------->
           <h1>Register</h1>
-          <form action="">
-            <span id="login-error"></span>
-            <input
-              type="text"
-              name="firstname"
-              id="firstname"
-              placeholder="firstname"
-              required
-            />
-            <br />
-            <input
-              type="text"
-              name="lastname"
-              id="lastname"
-              placeholder="Lastname"
-              required
-            />
+          <form id="reg-form" action="">
+            <span id="reg-error"></span>
+            <input type="text" name="name" id="regName" placeholder="Name" />
             <br />
             <input
               type="email"
               name="email"
-              id="email"
+              id="regEmail"
               placeholder="Email"
-              required
             />
             <br />
             <input
               type="password"
               name="password"
-              id="password"
+              id="regPassword"
               placeholder="password"
-              required
             />
             <br />
             <input
               type="password"
               name="confirmPassword"
-              id="password"
+              id="regConfPassword"
               placeholder=" Confirm password"
-              required
             />
             <br />
-            <input type="submit" name="login" id="login" value="Register" />
-            <br />
-            <p>
-              If you already registered please &nbsp;
-              <a href="login.html">login</a>
-            </p>
+            <input type="submit" name="login" id="regLogin" value="Register" />
           </form>
         </div>
         <!--------------------------------------------------------------------------->
         <!------------------------------ Login Section ------------------------------->
         <div class="login-container">
           <h1>Login</h1>
-          <form action="">
+          <form id="log-form" action="">
             <span id="login-error"></span>
             <input
               type="text"
               name="email"
-              id="email"
+              id="logEmail"
               placeholder="email"
               required
             />
@@ -84,14 +63,14 @@
             <input
               type="password"
               name="password"
-              id="password"
+              id="logPassword"
               placeholder="password"
             />
             <br />
             <input
               type="submit"
               name="login"
-              id="login"
+              id="logLogin"
               value="Login"
               required
             />
