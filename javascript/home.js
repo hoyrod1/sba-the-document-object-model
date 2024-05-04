@@ -314,48 +314,67 @@ function assessmentForm(name) {
   // Append assessment form to the div
   assessmentDiv.appendChild(form);
 
-  const startingBodyWeight = document.getElementById("bodyWeight");
-  const fitnessGoal = document.getElementById("fitnessGoals");
-
-  const assessmentGoalTable = document.createElement("table");
-  const assessmentGoalFragment = document.createDocumentFragment();
-
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    const startingBodyWeight = document.getElementById("bodyWeight");
+    const fitnessGoal = document.getElementById("fitnessGoals");
 
     //----------------------------------------------------------------//
     // New div to contain the values inputed inside the assessment form
     const assessmentGoalDiv = document.createElement("div");
+    assessmentDiv.id = "app";
     assessmentGoalDiv.style.width = "80%";
     assessmentGoalDiv.style.height = "80%";
-    assessmentGoalDiv.style.margin = "15px auto";
+    assessmentGoalDiv.style.margin = "25px auto";
     assessmentGoalDiv.style.color = "white";
     assessmentGoalDiv.style.backgroundColor = " rgb(185, 184, 184)";
     assessmentGoalDiv.style.border = "2px solid white";
     assessmentGoalDiv.style.borderRadius = "15px";
 
     bodyTag.appendChild(assessmentGoalDiv);
+    // Create template element
+    const templateDive = document.createElement("div");
+    templateDive.id = "postTemplate";
+    // Create H1 element
+    const tempH1 = document.createElement("h1");
+    tempH1.style.textAlign = "center";
+    tempH1.style.textDecoration = "underline";
+    tempH1.style.margin = "0 auto";
+    tempH1.style.color = "white";
+    tempH1.textContent = "Your Wellness Status";
+    templateDive.appendChild(tempH1);
+    // Create hr element
+    const tempHr = document.createElement("hr");
+    templateDive.appendChild(tempHr);
+    // Create div element
+    const tempDiv = document.createElement("div");
+    tempDiv.style.padding = "0 15px";
+    tempDiv.style.marginBottom = "50px";
+    templateDive.appendChild(tempDiv);
 
+    assessmentGoalDiv.appendChild(templateDive);
+
+    // Assessment form data
     const weightInput = startingBodyWeight.value;
     const goalInput = fitnessGoal.value;
+
+    // Array of assessment form data
     const assessmentArr = [weightInput, goalInput];
+
+    const dFrag = document.createDocumentFragment();
+    templateDive.appendChild(dFrag);
+
     let incrementor = 1;
     assessmentArr.forEach((data) => {
-      // const outPutTag = document.createElement("p");
-      // outPutTag.style.fontSize = "large";
-      // outPutTag.style.margin = "10px";
-      // outPutTag.style.color = "green";
-      // assessmentDiv.appendChild(outPutTag);
-      const outPutTr = document.createElement("tr");
-      const outPutTd = document.createElement("td");
-      outPutTd.style.textAlign = "center";
-      outPutTd.textContent = `${incrementor}. ${data}`;
-      outPutTr.appendChild(outPutTd);
-      assessmentGoalFragment.appendChild(outPutTr);
+      // Create paragragh element
+      const tempPtag = document.createElement("p");
+      tempPtag.style.fontSize = "large";
+      tempPtag.textContent = `${incrementor}. ${data}`;
+      dFrag.appendChild(tempPtag);
+      tempDiv.appendChild(dFrag);
+      console.log(`${incrementor}. ${data}`);
       incrementor++;
     });
-
-    assessmentGoalTable.appendChild(assessmentGoalFragment);
 
     form.reset();
 
