@@ -37,7 +37,8 @@ nav a:hover {
   border-radius: 8px;
   box-shadow: 1px 1px 50px 1px rgba(27, 27, 27, 0.553);
 }
-h1 {
+h1,
+h2 {
   color: white;
   text-align: center;
   text-decoration: underline;
