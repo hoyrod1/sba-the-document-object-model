@@ -177,6 +177,8 @@ loginForm.addEventListener("submit", loginFormSubmission);
 
 function loginFormSubmission(e) {
   e.preventDefault();
+  // Caching the name from local storage
+  const loginUserNmae = localStorage.getItem("name");
   // Caching the username from local storage
   const loginUserEmail = localStorage.getItem("email");
   // Caching the password from local storage
@@ -215,9 +217,8 @@ function loginFormSubmission(e) {
   pTag.style.color = "green";
   pTag.textContent = successMessage;
   successDiv.appendChild(pTag);
+  assessmentForm(loginUserNmae);
   loginForm.reset();
-  console.log(mainContainer);
-  console.log(bodyTag);
   //------------------- Login Validaiton Function --------------------//
 
   // Validation function for the login User Name
@@ -252,4 +253,102 @@ function loginFormSubmission(e) {
     errorDisplay.textContent = message;
   }
   //==================================================================//
+}
+
+function assessmentForm(name) {
+  // New div to contain the message to fill out assessment form
+  const assessmentDiv = document.createElement("div");
+  assessmentDiv.style.width = "80%";
+  assessmentDiv.style.height = "80%";
+  assessmentDiv.style.margin = "15px auto";
+  assessmentDiv.style.color = "white";
+  assessmentDiv.style.backgroundColor = " rgb(185, 184, 184)";
+  assessmentDiv.style.border = "2px solid white";
+  assessmentDiv.style.borderRadius = "15px";
+
+  // Fill our assisment form message
+  const assessmentFormReq = ` ${name} please fill out the assessment form`;
+  const h1Tag = document.createElement("h1");
+  h1Tag.style.textAlign = "center";
+  h1Tag.style.textDecoration = "underline";
+  h1Tag.textContent = assessmentFormReq;
+  assessmentDiv.appendChild(h1Tag);
+  bodyTag.appendChild(assessmentDiv);
+
+  // Create a form dynamically
+  const form = document.createElement("form");
+  form.className = "assessment-form";
+  form.style.width = "50%";
+  form.style.height = "60%";
+  form.style.borderRadius = "15px";
+
+  // Create an input element
+  const bodyWeightGoal = document.createElement("input");
+  bodyWeightGoal.id = "bodyWeight";
+  bodyWeightGoal.style.color = "black";
+  bodyWeightGoal.style.backgroundColor = "white";
+  bodyWeightGoal.style.border = "2px solid  rgb(185, 184, 184)";
+  bodyWeightGoal.style.marginBottom = "10px";
+  bodyWeightGoal.style.width = "310px";
+  bodyWeightGoal.focus;
+  bodyWeightGoal.setAttribute("type", "text");
+  bodyWeightGoal.setAttribute("name", "bodyWeight");
+  bodyWeightGoal.setAttribute("placeholder", "Enter your current weight");
+  form.appendChild(bodyWeightGoal);
+
+  // Create an text area
+  const fitnessGoals = document.createElement("TEXTAREA");
+  fitnessGoals.style.padding = "5px";
+  fitnessGoals.id = "fitnessGoals";
+  fitnessGoals.cols = "35";
+  fitnessGoals.rows = "15";
+  fitnessGoals.placeholder = "Please describe your fitness goals";
+  form.appendChild(fitnessGoals);
+
+  // create a submit button
+  const submitButton = document.createElement("input");
+  submitButton.style.width = "310px";
+  submitButton.setAttribute("type", "submit");
+  submitButton.setAttribute("value", "Submit");
+  form.appendChild(submitButton);
+  // Append assessment form to the div
+  assessmentDiv.appendChild(form);
+  //----------------------------------------------------------------//
+  // New div to contain the values inputed inside the assessment form
+  const assessmentGoalDiv = document.createElement("div");
+  assessmentGoalDiv.style.width = "80%";
+  assessmentGoalDiv.style.height = "80%";
+  assessmentGoalDiv.style.margin = "15px auto";
+  assessmentGoalDiv.style.color = "white";
+  assessmentGoalDiv.style.backgroundColor = " rgb(185, 184, 184)";
+  assessmentGoalDiv.style.border = "2px solid white";
+  assessmentGoalDiv.style.borderRadius = "15px";
+
+  bodyTag.appendChild(assessmentGoalDiv);
+
+  const startingBodyWeight = document.getElementById("bodyWeight");
+  const fitnessGoal = document.getElementById("fitnessGoals");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const weightInput = startingBodyWeight.value;
+    const goalInput = fitnessGoal.value;
+    const assessmentArr = [weightInput, goalInput];
+    let incrementor = 1;
+    assessmentArr.forEach((data) => {
+      const outPutTag = document.createElement("p");
+      outPutTag.style.fontSize = "large";
+      outPutTag.style.margin = "10px";
+      outPutTag.style.textAlign = "center";
+      outPutTag.style.color = "green";
+      outPutTag.textContent = `${incrementor}. ${data}`;
+      assessmentDiv.appendChild(outPutTag);
+      incrementor++;
+    });
+
+    form.reset();
+
+    const loginSuccessMessage = assessmentDiv.previousElementSibling;
+    loginSuccessMessage.style.display = "none";
+  });
 }
