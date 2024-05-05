@@ -4,17 +4,23 @@
   box-sizing: border-box;
 }
 body {
-  background-color: rgb(86, 121, 149);
+  background-color: black;
+  background-image: url(../images/meditation.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* height: 100%; */
   padding: 20px;
 }
 
 nav {
-  background-color: rgb(250, 250, 250);
+  background-color: rgba(4, 4, 3, 0.698);
   border: 2px solid rgb(185, 184, 184);
   border-radius: 8px;
 }
 
 nav a {
+  color: rgb(250, 251, 251);
+  font-size: larger;
   padding: 10px;
   display: block;
   text-align: center;
@@ -28,7 +34,7 @@ nav a:hover {
 }
 
 .container {
-  background-color: rgb(185, 184, 184);
+  background-color: rgba(4, 4, 3, 0.698);
   width: 80%;
   height: 80%;
   margin: 80px auto;
