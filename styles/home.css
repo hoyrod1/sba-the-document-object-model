@@ -95,13 +95,13 @@ input[type="submit"] {
 }
 
 #regLogin {
-  background-color: rgb(54, 145, 145);
+  background-color: rgb(224, 163, 50);
   color: white;
   transition: 1s;
 }
 
 #regLogin:hover {
-  color: rgb(138, 255, 117);
+  color: rgb(224, 163, 50);
   background-color: rgb(86, 121, 149);
 }
 
@@ -117,13 +117,13 @@ a {
 }
 
 #logLogin {
-  background-color: rgb(54, 145, 145);
+  background-color: rgb(224, 163, 50);
   color: white;
   transition: 1s;
 }
 
 #logLogin:hover {
-  color: rgb(138, 255, 117);
+  color: rgb(224, 163, 50);
   background-color: rgb(86, 121, 149);
 }
 

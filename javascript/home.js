@@ -287,7 +287,7 @@ function assessmentForm(name) {
   // Create a form dynamically
   const form = document.createElement("form");
   form.className = "assessment-form";
-  form.style.width = "50%";
+  form.style.width = "40%";
   form.style.height = "60%";
   form.style.borderRadius = "15px";
 
@@ -298,7 +298,7 @@ function assessmentForm(name) {
   bodyWeightGoal.style.backgroundColor = "white";
   bodyWeightGoal.style.border = "2px solid  rgb(185, 184, 184)";
   bodyWeightGoal.style.marginBottom = "10px";
-  bodyWeightGoal.style.width = "310px";
+  bodyWeightGoal.style.width = "300px";
   bodyWeightGoal.focus;
   bodyWeightGoal.setAttribute("type", "text");
   bodyWeightGoal.setAttribute("name", "bodyWeight");
@@ -310,13 +310,13 @@ function assessmentForm(name) {
   fitnessGoals.style.padding = "5px";
   fitnessGoals.id = "fitnessGoals";
   fitnessGoals.cols = "35";
-  fitnessGoals.rows = "15";
+  fitnessGoals.rows = "10";
   fitnessGoals.placeholder = "Please describe your fitness goals";
   form.appendChild(fitnessGoals);
 
   // create a submit button
   const submitButton = document.createElement("input");
-  submitButton.style.width = "310px";
+  submitButton.style.width = "300px";
   submitButton.setAttribute("type", "submit");
   submitButton.setAttribute("value", "Submit");
   form.appendChild(submitButton);
