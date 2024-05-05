@@ -4,25 +4,25 @@ console.log("===================== Home Page ====================");
 console.log(
   "==================== Registration Validation ===================="
 );
-//=================================================================//
-//================== Registration Form Validation =================//
-//----------------- Error display container cached ----------------//
+//====================================================================//
+//=================== Registration Form Validation ===================//
+//--------------------- Error display span cached --------------------//
 let errorDisplay = document.querySelector("#reg-error");
-//---------------- Registration form elements cached --------------//
+//----------------- Registration form elements cached ----------------//
 const registrationForm = document.getElementById("reg-form");
 const regUserFName = registrationForm.elements["name"];
 const regUserEmail = registrationForm.elements["email"];
 const regUserPassword = registrationForm.elements["password"];
 const confirmPassword = registrationForm.elements["confirmPassword"];
 
-//--------------- Event Listner for registration form ---------------//
+//---------------- Event Listner for registration form ----------------//
 registrationForm.addEventListener("submit", registrationFormSubmission);
 function registrationFormSubmission(e) {
   e.preventDefault();
 
-  const regUserNameVal = validateRegUsername();
-  const userEmailVal = validateRegEmail();
   const userPasswordVal = validateRegPassword();
+  const userEmailVal = validateRegEmail();
+  const regUserNameVal = validateRegUsername();
 
   if (regUserNameVal === false) {
     e.returnValue = false;
@@ -36,7 +36,6 @@ function registrationFormSubmission(e) {
     e.returnValue = false;
     return false;
   }
-
   //==================================================================//
   //------------------------------------------------------------------//
   // Prepare Validated input for local storage
@@ -61,12 +60,12 @@ function registrationFormSubmission(e) {
   const storingEmail = localStorage.setItem("email", valUserEmail);
   // Storing the password to local storage
   const storingPassword = localStorage.setItem("password", valUsrPassword);
-
+  // This line resets the form if registration is successful
   registrationForm.reset();
   //------------------------------------------------------------------//
   //==================================================================//
   //---------------- Registration Validaiton Function ----------------//
-  // Registration Username Validiation
+  // Validiation to check if name field is empty
   function validateRegUsername() {
     const regFnameVal = regUserFName.value.toLowerCase();
     if (regFnameVal === "") {
@@ -76,6 +75,7 @@ function registrationFormSubmission(e) {
       return false;
     }
 
+    // Validiation to check if name field is less than 4 characters
     if (regFnameVal.length < 4) {
       const message = "The name field must be at least four characters long";
       registrationErrorMessage(message);
@@ -84,17 +84,19 @@ function registrationFormSubmission(e) {
     }
   }
   //===================================================================/
-  // Validation For Registration Email Validiation
+  // Validation For Email Registration
   function validateRegEmail() {
-    const regUserEmailVal = regUserEmail.value.toLowerCase();
-    const regE = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    let regUserEmailEx = regE.test(regUserEmailVal);
+    // Validation to check if email is not empty
     if (regUserEmailVal === "") {
       const message = "The email Feild can not be empty";
       registrationErrorMessage(message);
       regUserFName.focus();
       return false;
     }
+    // Validation to check if email is valid
+    const regUserEmailVal = regUserEmail.value.toLowerCase();
+    const regE = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    let regUserEmailEx = regE.test(regUserEmailVal);
     if (!regUserEmailEx) {
       const message = "The is not a valid email";
       registrationErrorMessage(message);
@@ -107,21 +109,21 @@ function registrationFormSubmission(e) {
   function validateRegPassword() {
     const regUserPasswordVal = regUserPassword.value;
     const regConfirmPassword = confirmPassword.value;
-
+    // Validation to check if password is not empty
     if (regUserPasswordVal === "") {
       const message = "The password Feild can not be empty";
       registrationErrorMessage(message);
       regUserPassword.focus();
       return false;
     }
-
+    // Validiation to check if password field is less than 6 characters
     if (regUserPasswordVal.length < 6) {
       const message = "The password field must be at least six characters long";
       registrationErrorMessage(message);
       regUserFName.focus();
       return false;
     }
-
+    // Validiation to check if password field is not more than 32 characters
     if (regUserPasswordVal.length > 32) {
       const message =
         "The password field can not be more than 32 characters long";
@@ -129,13 +131,14 @@ function registrationFormSubmission(e) {
       regUserFName.focus();
       return false;
     }
-
+    // Validation to check if confirmation password is not empty
     if (regConfirmPassword === "") {
       const message = "The confirm password Feild can not be empty";
       registrationErrorMessage(message);
       confirmPassword.focus();
       return false;
     }
+    // Validation to check if password is valid
     const regE = /[a-zA-Z0-9]/;
     let regUserPasswordEx = regE.test(regUserPasswordVal);
     if (!regUserPasswordEx) {
@@ -144,7 +147,7 @@ function registrationFormSubmission(e) {
       regUserPassword.focus();
       return false;
     }
-
+    // Validation to check if both password inputs matches
     if (regUserPasswordVal !== regConfirmPassword) {
       const message = "Your password do not match";
       registrationErrorMessage(message);
@@ -153,7 +156,7 @@ function registrationFormSubmission(e) {
     }
   }
   //==================================================================//
-  //---------------- Function to create error message ----------------//
+  //--------- Function to create registration error message ----------//
   function registrationErrorMessage(message) {
     errorDisplay.style.display = "block";
     errorDisplay.style.fontSize = "small";
@@ -161,19 +164,19 @@ function registrationFormSubmission(e) {
   }
   //==================================================================//
 }
-//===================================================================//
+//====================================================================//
 console.log("=================== Login Validation ===================");
-//===================================================================//
-//=================== Login Form Validation ===================//
+//====================================================================//
+//====================== Login Form Validation =======================//
 let loginErrorDisplay = document.querySelector("#login-error");
-//---------------- Body element cached cached ----------------//
+//-------------------- Body element cached cached --------------------//
 const bodyTag = document.body;
 const mainContainer = document.getElementsByClassName("container");
-//---------------- Login form elements cached ----------------//
+//-------------------- Login form elements cached --------------------//
 const loginForm = document.getElementById("log-form");
 const loginEmail = loginForm.elements["email"];
 const loginUserPassword = loginForm.elements["password"];
-//--------------- Event Listner for login form ---------------//
+//------------------- Event Listner for login form -------------------//
 loginForm.addEventListener("submit", loginFormSubmission);
 
 function loginFormSubmission(e) {
@@ -184,7 +187,7 @@ function loginFormSubmission(e) {
   const loginUserEmail = localStorage.getItem("email");
   // Caching the password from local storage
   const storedPassword = localStorage.getItem("password");
-
+  // caching the validation functions to check if there are any errors
   const userNameVal = validateLoginUsername();
   const userPasswordVal = validateLoginPassword();
 
@@ -212,33 +215,36 @@ function loginFormSubmission(e) {
   successDiv.style.border = "2px solid white";
   successDiv.style.borderRadius = "15px";
   bodyTag.appendChild(successDiv);
-
+  // p tag for the success message
   const pTag = document.createElement("p");
   pTag.style.textAlign = "center";
   pTag.style.color = "green";
   pTag.textContent = successMessage;
   successDiv.appendChild(pTag);
+  // Calling the assessmentForm() and passing the users name as an arguments
   assessmentForm(loginUserNmae);
+  // This line resets the form if the login is successful
   loginForm.reset();
   //------------------- Login Validaiton Function --------------------//
 
   // Validation function for the login User Name
   function validateLoginUsername() {
-    // Storing the username in lower case
+    // Caching the email in lower case
     let userEmailValue = loginEmail.value.toLowerCase();
-
+    // If the email inputed does not match the email in localstoage
+    // the email does not exist
     if (userEmailValue !== loginUserEmail) {
-      const message = "Username doesn't exist";
+      const message = "The email does not exist";
       loginErrorMessage(message);
       loginEmail.focus();
       return false;
     }
   }
-
   // Validation function for the login password
   function validateLoginPassword() {
     let userPasswordValue = loginUserPassword.value;
-
+    // If the password inputed does not match the password in localstoage
+    // the login fails
     if (userPasswordValue !== storedPassword) {
       const message = "Incorrect Password";
       loginErrorMessage(message);
@@ -246,16 +252,18 @@ function loginFormSubmission(e) {
       return false;
     }
   }
-  //==================================================================//
-  //---------------- Function to create error message ----------------//
+  //===================================================================//
+  //------------- Function to create login error message --------------//
   function loginErrorMessage(message) {
     loginErrorDisplay.style.display = "block";
     loginErrorDisplay.style.fontSize = "small";
     loginErrorDisplay.textContent = message;
   }
-  //==================================================================//
+  //===================================================================//
 }
-
+//=====================================================================//
+//=====================================================================//
+//=============== Code For Creating The Assessment Form ===============//
 function assessmentForm(name) {
   // New div to contain the message to fill out assessment form
   const assessmentDiv = document.createElement("div");
@@ -314,12 +322,13 @@ function assessmentForm(name) {
   form.appendChild(submitButton);
   // Append assessment form to the div
   assessmentDiv.appendChild(form);
-
+  // Form event listner when submit button clicked
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    // Cached the body weight entered in the input
     const startingBodyWeight = document.getElementById("bodyWeight");
+    // Cached the fitness goals entered in the input
     const fitnessGoal = document.getElementById("fitnessGoals");
-
     //----------------------------------------------------------------//
     // New div to contain the values inputed inside the assessment form
     const assessmentGoalDiv = document.createElement("div");
@@ -333,7 +342,7 @@ function assessmentForm(name) {
     assessmentGoalDiv.style.borderRadius = "15px";
 
     bodyTag.appendChild(assessmentGoalDiv);
-    // Create template element
+    // Create div element
     const templateDive = document.createElement("div");
     templateDive.id = "postTemplate";
     // Create H1 element
@@ -361,7 +370,8 @@ function assessmentForm(name) {
 
     // Array of assessment form data
     const assessmentArr = [weightInput, goalInput];
-
+    // Document fragment will contain the users weight and goals
+    // inputed in the form
     const dFrag = document.createDocumentFragment();
     templateDive.appendChild(dFrag);
 
@@ -376,9 +386,10 @@ function assessmentForm(name) {
       console.log(`${incrementor}. ${data}`);
       incrementor++;
     });
-
+    // Assessment form is cleared after values from the form is populated
+    // to the p tag and the p tage appended to the temp div
     form.reset();
-
+    // This removes the login success message from the page
     const loginSuccessMessage = assessmentDiv.previousElementSibling;
     loginSuccessMessage.style.display = "none";
   });
