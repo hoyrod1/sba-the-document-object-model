@@ -87,7 +87,7 @@ function registrationFormSubmission(e) {
   // Validation For Email Registration
   function validateRegEmail() {
     // Validation to check if email is not empty
-    if (regUserEmailVal === "") {
+    if (regUserEmail === "") {
       const message = "The email Feild can not be empty";
       registrationErrorMessage(message);
       regUserFName.focus();
