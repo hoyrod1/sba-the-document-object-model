@@ -271,7 +271,7 @@ function assessmentForm(name) {
   assessmentDiv.style.height = "80%";
   assessmentDiv.style.margin = "15px auto";
   assessmentDiv.style.color = "white";
-  assessmentDiv.style.backgroundColor = " rgb(185, 184, 184)";
+  assessmentDiv.style.backgroundColor = "rgba(4, 4, 3, 0.698)";
   assessmentDiv.style.border = "2px solid white";
   assessmentDiv.style.borderRadius = "15px";
 
@@ -316,6 +316,7 @@ function assessmentForm(name) {
 
   // create a submit button
   const submitButton = document.createElement("input");
+  submitButton.style.backgroundColor = "rgb(224, 163, 50)";
   submitButton.style.width = "300px";
   submitButton.setAttribute("type", "submit");
   submitButton.setAttribute("value", "Submit");
@@ -337,7 +338,7 @@ function assessmentForm(name) {
     assessmentGoalDiv.style.height = "80%";
     assessmentGoalDiv.style.margin = "25px auto";
     assessmentGoalDiv.style.color = "white";
-    assessmentGoalDiv.style.backgroundColor = " rgb(185, 184, 184)";
+    assessmentGoalDiv.style.backgroundColor = "rgba(4, 4, 3, 0.698)";
     assessmentGoalDiv.style.border = "2px solid white";
     assessmentGoalDiv.style.borderRadius = "15px";
 
